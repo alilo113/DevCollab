@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { File } from "./file";
+import { File } from "./CodeFile";
 
 export function EditorTemplate() {
   return (
