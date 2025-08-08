@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { File } from "../code file/file";
-import { TerminalComponent } from "../terminal/terminal";
+import { File } from "./file";
 
 export function EditorTemplate() {
   return (
     <div className="">
       <File/>
-      <TerminalComponent/>
     </div>
   )
 }
