@@ -1,9 +1,9 @@
 import React from "react"
-import { EditorTemplate } from "./component/editor/editor"
+import { File } from "./components/CodeFile/file"
 
 function App() {
   return (
-    <EditorTemplate/>
+    <File/>
   )
 }
 
