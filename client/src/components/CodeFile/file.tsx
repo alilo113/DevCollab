@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Editor from "@monaco-editor/react";
+import { Output } from "./output";
 
 export function File() {
   return (
@@ -10,12 +11,13 @@ export function File() {
       </div>
       {/* Monaco Editor */}
       <div className="flex-grow">
-        <Editor
-          height="100%"
-          width="50%"
-          language="javascript"
-          theme="vs-dark"
-        />
+      <Editor
+      height="100%"
+      width="50%"
+      language="javascript"
+      theme="vs-dark"
+      defaultValue="// Start coding here..."
+      />
       </div>
     </div>
   );
