@@ -11,7 +11,7 @@ export function File() {
     const url = "https://ce.judge0.com/submissions/?base64_encoded=false&wait=true";
 
     const payload = {
-      language_id: 74, // JS ES6
+      language_id: 74,
       source_code: code,
     };
 
