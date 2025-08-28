@@ -6,26 +6,43 @@ import code from "./module/code.js";
 import { json } from 'express';
 import cors from "cors"
 
+app.use(express.json()); // use express.json()
+app.use(cors)
+
 mongoose.connect("mongodb://127.0.0.1:27017/codeDB")
   .then(() => console.log("Database connected!!"))
   .catch(err => console.error(err));
 
 const app = express();
 const server = createServer(app);
-const io = new Server(server);
 
-app.use(express.json()); // use express.json()
-app.use(cors)
-
-app.get('/', (req, res) => {
-  res.send('<h1>Hello world</h1>');
+const io = new Server(server, {
+    path: "/socket", 
+    cors: {
+        origin: "http://localhost:5173/",
+        methods: ["GET", "POST"]
+    }
 });
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
+    console.log("userConnected")
+
+    socket.on("code", async (newCode) => {
+        console.log("Received code: ", newCode)
+
+        try {
+            const {name, text} = newCode;
+            const savedCode = await new code({name, text}).save()
+
+            io.emit("code", savedCode);
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
+    socket.on("disconnect", () => {
+        console.log("User disconnected")
+    })
 });
 
 server.listen(3000, () => {
