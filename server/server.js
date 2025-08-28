@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import code from "./module/code.js";
 import cors from "cors";
 
-const app = express(); // ✅ must come first
+const app = express(); 
 const server = createServer(app);
 
 // middlewares
