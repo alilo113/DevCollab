@@ -8,6 +8,4 @@ const codeSchema = new mongoose.Schema({
 });
 
 const Code = mongoose.model("Code", codeSchema);
-
-// ✅ use export default instead of module.exports
 export default Code;
