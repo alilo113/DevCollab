@@ -37,7 +37,7 @@ export function File() {
   return (
     <div className="flex flex-col h-screen">
       <div className="bg-black text-white px-6 py-4 flex items-center justify-between shadow-md">
-        <h1 className="text-lg font-semibold tracking-wide">Name of the Room</h1>
+        <h1 className="text-lg font-semibold tracking-wide">DevCollab</h1>
         <button
           className="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-medium px-4 py-2 rounded-lg shadow-md transition-all duration-200 cursor-pointer"
           onClick={runCode}
