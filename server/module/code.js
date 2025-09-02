@@ -1,11 +1,8 @@
 import mongoose from "mongoose";
 
 const codeSchema = new mongoose.Schema({
-  sender: String,
-  receiver: String,
-  text: String,
-  name: String
-});
+  name: { type: String, required: true },
+  text: { type: String, required: true },
+}, { timestamps: true });
 
-const Code = mongoose.model("Code", codeSchema);
-export default Code;
+export default mongoose.model("Code", codeSchema);
