@@ -4,6 +4,7 @@ import { Server } from 'socket.io';
 import mongoose from 'mongoose';
 import Code from './module/code.js';
 import cors from 'cors';
+import User from "./module/users.js"
 
 const app = express();
 const server = createServer(app);
@@ -55,6 +56,17 @@ io.on("connection", (socket) => {
     console.log(`User disconnected: ${socket.id}`);
   });
 });
+
+app.post("/signup", async (req, res) => {
+  try {
+    const {username, email, password} = req.body
+    const newUser = new User({username: username, email: email, password: password})
+    console.log(newUser)
+    await newUser.save()
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 // Simple API endpoint
 app.get("/", (req, res) => {
