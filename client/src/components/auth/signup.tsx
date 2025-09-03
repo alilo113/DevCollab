@@ -1,12 +1,26 @@
-import React, {use, useState} from "react";
+import React, {useState} from "react";
 
 export function Signup(){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
 
-    function handleSubmit(){
-        return null
+    async function handleSubmit(){
+        const url = "http://localhost:3000/signup"
+
+        const playload = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({username, email, password})
+        }
+
+        try {
+            const res = await fetch(url, playload)
+            const data = await res.json()
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
